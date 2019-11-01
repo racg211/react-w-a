@@ -4,25 +4,44 @@ import WeatherInfo from './components/WheaterInfo';
 import WeatherForm from './components/WeatherForm';
 
 export default class App extends Component{
-    
-    getWeather = e => {
-        const { city, country } = e.target.elements;
 
-        const cityValue = city.value;
-        const countryValue = country.value;
+    constructor(props){
+        super(props);
+        this.state = {
+            value: ''
+        }
+    }
 
-        console.log(cityValue, countryValue)
-        
+    handleChange(e){
+        this.setState({value: e.target.value})
+    }
+
+    handleSubmit(e){
         e.preventDefault();
         
     }
+    
+    
+    // getWeather = e => {
+    //     const { city, country } = e.target.elements;
+
+    //     const cityValue = city.value;
+    //     const countryValue = country.value;
+
+    //     console.log(cityValue, countryValue)
+
+    //     alert("hola")
+        
+    //     e.preventDefault();
+        
+    // }
 
     render(){
         return (
             <div className='container'>
                 <div className="row">
                     <div className="col-md-4 mx-auto">
-                        <WeatherForm getWeather={this.props.getWeather}/>
+                        <WeatherForm getWeather={this.getWeather}/>
                         <WeatherInfo/>
                     </div>
                 </div>
